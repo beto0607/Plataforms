@@ -14,14 +14,15 @@ void Core::Init(){
     std::cout << "SDL Init error" << '\n';
     return;
   }
-  window = SDL_CreateWindow("Plataformer", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, fullscreen);
+  this->window = SDL_CreateWindow("Plataformer", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, fullscreen);
   if(!window){
     std::cout << "SDL Window error" << '\n';
     return;
   }
-  isRunning = true;
-  actualScene = new GameplayScene();
-  actualScene->Init(this);
+  this->isRunning = true;
+  this->gameplayScene = new GameplayScene();
+  this->actualScene = gameplayScene;
+  this->actualScene->Init(this);
 }
 
 void Core::MainLoop(){
@@ -39,7 +40,7 @@ void Core::HandleEvents(){
   SDL_PollEvent(&event);
   switch (event.type) {
     case SDL_QUIT:
-      isRunning = false;
+      this->Quit();
       break;
     default:
       actualScene->HandleEvent(event);
@@ -48,3 +49,7 @@ void Core::HandleEvents(){
 }
 
 void Core::Render(){}
+
+void Core::Quit(){
+  isRunning = false;
+}

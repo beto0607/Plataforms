@@ -7,7 +7,10 @@ class GameplayScene :  public Scene{
 public:
   GameplayScene();
   ~GameplayScene();
+
+  void HandleEvent(SDL_Event _event);
 private:
+  void OnKeyDownEvent(SDL_KeyboardEvent _key);
 
 };
 

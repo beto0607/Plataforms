@@ -1,8 +1,10 @@
 #include "Scene.h"
+#include "../Core.h"
 #include <iostream>
 Scene::Scene(){}
 Scene::~Scene(){}
 void Scene::Init(Core *_core){
+  std::cout << "SCENE - Init" << '\n';
   this->core = _core;
 }
 void Scene::Update(){}

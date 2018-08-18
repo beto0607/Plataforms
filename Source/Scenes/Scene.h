@@ -7,20 +7,23 @@
 #include "Background.h"
 #include "SDL2/SDL.h"
 
+
 class Background;
 class Character;
 class Ambient;
+
 class Core;
+
 class Scene{
 public:
   Scene();
   ~Scene();
 
-  void Init(Core *_core);
+  void virtual Init(Core *_core);
 
-  void Update();
-  void HandleEvent(SDL_Event _event);
-  void Render();
+  void virtual Update();
+  void virtual HandleEvent(SDL_Event _event);
+  void virtual Render();
 protected:
   const char *sceneName = "Empty";
   Core *core;

@@ -1,4 +1,9 @@
-SOURCES = Source/Core.cpp Source/Scenes/Scene.cpp Source/Scenes/Gameplay/GameplayScene.cpp Source/Scenes/Character.cpp Source/Scenes/Ambient.cpp Source/Scenes/Character.cpp Source/Scenes/Background.cpp 
+SDL = -lSDL2 -lSDL_image
+
+BUILT_FOLDER = ./Built
+GAMEPLAY = Source/Scenes/Gameplay/GameplayScene.cpp Source/Scenes/Gameplay/Platform.cpp
+SOURCES = Source/Core.cpp Source/Scenes/Scene.cpp Source/Scenes/GameEntity.cpp
+
 
 all:
-	g++ -o Built/main.out main.cpp $(SOURCES) -lSDL2
+	g++ -o $(BUILT_FOLDER)/main.out  $(SOURCES) $(GAMEPLAY) main.cpp $(SDL)
